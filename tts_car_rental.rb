@@ -40,8 +40,7 @@ if
 	elsif user_choice == 9
 		byebye
 	else
-		puts "That is not a valid option. Please select 1, 2, 3, 4, or 9."
-		print_menu
+		failed_byebye
 		
 	end
 end
@@ -77,7 +76,7 @@ if
 		byebye
 	else
 		puts "That is not a valid option. Please select 1, 2, 3, 4, or 9."
-		second_menu
+		failed_byebye
 		
 	end
 end
@@ -151,12 +150,10 @@ def byebye
 	puts " "
 end
 
-# #define exit message
-# def byebye
-# 	puts list_vehicles
-# 	puts list_renters
-# 	puts "*** Thank you for renting. Goodbye."
-# end
+#define failed selectionexit message
+def failed_byebye
+	puts "*** That is not a valid option. Goodbye."
+end
 
 #define list vehicles
 def list_vehicles

@@ -27,16 +27,20 @@ def print_menu clear
 if
 	user_choice == 1
 		add_vehicle
-		continue_vehicle
+		second_menu(false)
+		# continue_vehicle
 	elsif user_choice == 2
 		add_person
-		continue_people
+		second_menu(false)
+		# continue_people
 	elsif user_choice == 3
 		list_vehicles
-		continue_vehicle
+		second_menu(true)
+		# continue_vehicle
 	elsif user_choice == 4
 		list_renters
-		continue_people
+		second_menu(true)
+		# continue_people
 	elsif user_choice == 9
 		byebye
 	else
@@ -50,6 +54,7 @@ def second_menu clear
 	if clear
 		system "clear"
 	end
+	puts " "
 	puts "*** Please select from the following menu: ***"
 	puts "*** 1. Add a Vehicle ***"
 	puts "*** 2. Add a Renter ***"
@@ -62,24 +67,48 @@ def second_menu clear
 if
 	user_choice == 1
 		add_vehicle
-		continue_vehicle
+		third_menu(false)
+		# continue_vehicle
 	elsif user_choice == 2
 		add_person
-		continue_people
+		third_menu(false)
+		# continue_people
 	elsif user_choice == 3
 		list_vehicles
-		continue_vehicle
+		third_menu(false)
+		# continue_vehicle
 	elsif user_choice == 4
 		list_renters
-		continue_people
+		third_menu(false)
+		# continue_people
 	elsif user_choice == 9
 		byebye
 	else
-		puts "That is not a valid option. Please select 1, 2, 3, 4, or 9."
 		failed_byebye
 		
 	end
 end
+
+
+#define Tertiary Menu
+def third_menu clear
+	if clear
+		system "clear"
+	end
+	puts " "
+	puts "*** Do you wish to continue? Y or N ***"
+	user_choice = gets.chomp.upcase
+	if
+	user_choice == "Y"
+		second_menu(false)
+	elsif user_choice = "N"
+		byebye
+	else
+		failed_byebye
+		
+	end
+end
+
 
 #define add vehicle
 def add_vehicle
@@ -110,35 +139,6 @@ def add_person
 end
 
 
-#define option to continue adding vehicles
-def continue_vehicle
-	puts "Would you like to add another vehicle? Enter Y or N."
-	continue1 = gets.chomp.upcase
-	if continue1 == "Y"
-		add_vehicle
-	else
-		puts " "
-		second_menu(false)
-	end
-
-
-end
-	
-#define option to continue adding people
-def continue_people
-	puts "Would you like to add another person? Enter Y or N."
-	continue2 = gets.chomp.upcase
-	if continue2 == "Y"
-		add_person
-	else
-		puts " "
-		second_menu(false)
-	# else
-	# 	byebye
-	end
-
-
-end
 
 #define exit message
 def byebye
@@ -161,7 +161,6 @@ def list_vehicles
 	puts "You have entered the following vehicles: "
 		@lot.each do |car|
 			puts "#{car.make} #{car.model} #{car.year}"
-			puts " "
 		end
 
 #define list renters
@@ -169,7 +168,9 @@ def list_renters
 	puts " "
 	puts "You have entered the following renters: "
 		@renters.each do |renter|
-			puts "#{renter.name} #{renter.age} #{renter.city}"
+			puts "Name: #{renter.name}"
+			puts "Age: #{renter.age}"
+			puts "City: #{renter.city}"
 			puts " "
 		end
 	end

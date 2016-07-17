@@ -8,7 +8,6 @@ require_relative "vehicle"
 #require person.rb
 require_relative "person"
 
-
 #define Main Menu
 def print_menu clear
 	if clear
@@ -28,19 +27,19 @@ if
 	user_choice == 1
 		add_vehicle
 		second_menu(false)
-		# continue_vehicle
+		
 	elsif user_choice == 2
 		add_person
 		second_menu(false)
-		# continue_people
+		
 	elsif user_choice == 3
 		list_vehicles
 		second_menu(true)
-		# continue_vehicle
+		
 	elsif user_choice == 4
 		list_renters
 		second_menu(true)
-		# continue_people
+		
 	elsif user_choice == 9
 		byebye
 	else
@@ -68,19 +67,19 @@ if
 	user_choice == 1
 		add_vehicle
 		third_menu(false)
-		# continue_vehicle
+		
 	elsif user_choice == 2
 		add_person
 		third_menu(false)
-		# continue_people
+		
 	elsif user_choice == 3
 		list_vehicles
 		third_menu(false)
-		# continue_vehicle
+		
 	elsif user_choice == 4
 		list_renters
 		third_menu(false)
-		# continue_people
+		
 	elsif user_choice == 9
 		byebye
 	else
@@ -98,12 +97,12 @@ def third_menu clear
 	puts " "
 	puts "*** Do you wish to continue? Y or N ***"
 	user_choice = gets.chomp.upcase
-	if
-	user_choice == "Y"
+		if
+		user_choice == "Y"
 		second_menu(false)
-	elsif user_choice = "N"
-		byebye
-	else
+		elsif user_choice == "N"
+			byebye
+		else
 		failed_byebye
 		
 	end
@@ -139,11 +138,8 @@ def add_person
 end
 
 
-
 #define exit message
 def byebye
-	list_vehicles
-	list_renters
 	puts " "
 	puts "*** Thank you for renting. Goodbye."
 	puts " "
@@ -158,7 +154,7 @@ end
 #define list vehicles
 def list_vehicles
 	puts " "
-	puts "You have entered the following vehicles: "
+	puts "You have entered the following vehicle(s): "
 		@lot.each do |car|
 			puts "#{car.make} #{car.model} #{car.year}"
 		end
@@ -166,7 +162,7 @@ def list_vehicles
 #define list renters
 def list_renters
 	puts " "
-	puts "You have entered the following renters: "
+	puts "You have entered the following renter(s): "
 		@renters.each do |renter|
 			puts "Name: #{renter.name}"
 			puts "Age: #{renter.age}"

@@ -129,14 +129,20 @@ def add_person
 	name = gets.chomp
 	puts "Enter the renter's age."
 	age = gets.chomp.to_i
+	#add ege test
+		if age < 21
+		puts "This person is not eligible to rent a vehicle. Please enter a valid renter."
+		add_person
+		else
+	#end age test
 	puts "Enter the renter's city."
 	city = gets.chomp
 	renter = Person.new(name, age, city)
 	@renters.push(renter)
 	puts " "
 	puts "#{renter.name} has been entered."
+		end
 end
-
 
 #define exit message
 def byebye
